@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Grade it to me gently.";
+}
+<div ng-controller="gradeController">
+    <div class="jumbotron">
+        <h1>Gradify</h1>
+        <p class="lead">For professors and teachers who doesn't want to break their student's heart. Grade it to them gently. </p>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <table class="table table-responsive table-hover">
+                <tr>
+                    <th>SUBJECT:</th>
+                    <td>
+                        <input ng-model="new.subject" class="col-sm-12" id="subject" type="text" placeholder="Ex. Differential Equations" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>SCORE:</th>
+                    <td>
+                        <input ng-model="new.score" class="col-sm-12" id="score" type="text" placeholder="1.5 or 95" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>INSTRUCTOR (optional):</th>
+                    <td>
+                        <input ng-model="new.instructor" class="col-sm-12" id="instructor" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>TERM (optional):</th>
+                    <td>
+                        <input ng-model="new.term" class="col-sm-12" id="term" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>PASSCODE (will make it private):</th>
+                    <td>
+                        <input ng-model="new.passcode" class="col-sm-12" id="passcode" type="password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong ng-show="!new.subject || !new.score" class="text-danger">
+                            *Enter subject and score to save this grade and share.
+                        </strong>
+                    </td>
+                    <td>
+                        <button ng-show="new.subject && new.score" class="btn btn-primary col-lg-6" ng-click="add()">
+                            Save
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-4 pull-left">
+            <div id="link" ng-show="new.shortUrl" class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h3>Your link to share</h3>
+                </div>
+                <div class="panel panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <small>Copy this link to share :p</small>
+                            <input id="newUrl" style="width: 100%;" type="text" ng-model="new.shortUrl" />
+                            <a target="_blank" href="{{new.shortUrl}}">View</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

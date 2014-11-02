@@ -1,0 +1,70 @@
+﻿@model Gradify.Web.Domain.Grade
+@{
+    ViewBag.Title = "Ggggggggradify!!!";
+}
+<script>
+    var gradify_secret_id = @Html.Encode(@Model.Id);
+</script>
+
+<div ng-controller="privateController">
+
+    <div class="row text-center" ng-show="cur.isVerified">
+        <div class="col-lg-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3>
+                        @ViewBag.Encouragement
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table width="50" class="table table-striped">
+                        <tr>
+                            <th>SUBJECT:</th>
+                            <td>@Html.DisplayFor(o => o.Subject)</td>
+                        </tr>
+                        <tr>
+                            <th>SCORE/GRADE:</th>
+                            <td>@Html.DisplayFor(o => o.Score)</td>
+                        </tr>
+                        <tr>
+                            <th>INSTRUCTOR:</th>
+                            <td>
+                                @Html.DisplayFor(o => o.Instructor)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>TERM:</th>
+                            <td>@Html.DisplayFor(o => o.Term)</td>
+                        </tr>
+                        <tr>
+                            <th>CREATED:</th>
+                            <td>@Html.DisplayFor(o => o.CreatedShortDateString)</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" ng-hide="cur.isVerified">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table>
+                        <tr>
+                            <th>Enter passcode:</th>
+                            <td>
+                                <input type="password" ng-model="cur.passcode" />
+                                <button class="btn btn-primary" ng-click="verify()">Verify</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
